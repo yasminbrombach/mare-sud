@@ -1,7 +1,7 @@
 import { supabase } from "@/lib/supabaseClient";
 
 export default async function Home() {
-  const { count } = await supabase
+  const { count, error } = await supabase
     .from("properties")
     .select("*", { count: "exact", head: true });
 
@@ -28,9 +28,19 @@ export default async function Home() {
             Verbindung zur Datenbank
           </p>
           <p className="text-lg font-light" style={{ color: "#FCFAF6" }}>
-            {count === null ? "Noch keine Verbindung" : `${count} Objekte in der Datenbank`}
+            {error ? "Fehler bei der Verbindung" : `${count} Objekte in der Datenbank`}
           </p>
         </div>
+        {error && (
+          <div className="rounded-xl px-4 py-3 mb-4 text-left" style={{ background: "#E4D6BE" }}>
+            <p className="text-[10px] uppercase tracking-widest mb-1" style={{ color: "#16283F" }}>
+              Technische Fehlermeldung (für Claude)
+            </p>
+            <p className="text-xs" style={{ color: "#16283F" }}>
+              {error.message}
+            </p>
+          </div>
+        )}
         <p className="text-xs" style={{ color: "#6b7280" }}>
           Wenn hier eine Zahl steht (auch 0), funktioniert die Verbindung zu
           Supabase. Als Nächstes ziehen wir die restlichen Screens aus dem
