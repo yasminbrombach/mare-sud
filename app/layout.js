@@ -1,4 +1,5 @@
 import "./globals.css";
+import BottomNav from "@/components/BottomNav";
 
 export const metadata = {
   title: "Mare Sud – Luxury Real Estate Mallorca",
@@ -8,7 +9,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="de">
-      <body>{children}</body>
+      <body>
+        <div className="pb-16">{children}</div>
+        <BottomNav />
+      </body>
     </html>
   );
 }
