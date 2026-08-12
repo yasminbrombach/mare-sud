@@ -30,6 +30,8 @@ export default async function ObjektDetailPage({ params }) {
     p.rental_license && "Vermietlizenz (ETV)",
   ].filter(Boolean);
 
+  const hasSourceUrl = Boolean(p.source_url);
+
   return (
     <main className="min-h-screen" style={{ background: "#EDE7DC" }}>
       <div className="max-w-md mx-auto min-h-screen" style={{ background: "#FCFAF6" }}>
@@ -67,14 +69,8 @@ export default async function ObjektDetailPage({ params }) {
             ))}
           </div>
 
-          {p.source_url && (
-            
-              href={p.source_url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block text-center text-xs mb-4"
-              style={{ color: "#B8924A" }}
-            >
+          {hasSourceUrl && (
+            <a href={p.source_url} target="_blank" rel="noopener noreferrer" className="block text-center text-xs mb-4" style={{ color: "#B8924A" }}>
               Original-Inserat ansehen
             </a>
           )}
