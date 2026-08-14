@@ -40,18 +40,15 @@ export default async function ConciergePage() {
                     )}
                     <p className="text-sm font-medium pr-20" style={{ color: "#16283F" }}>{p.name}</p>
                     <p className="text-xs mt-1 mb-2" style={{ color: "#6b7280" }}>{p.tagline}</p>
-                    {p.phone ? (
+                    {p.phone && (
                       <div className="flex flex-col gap-1">
                         {p.address && <p className="text-[11px]" style={{ color: "#9ca3af" }}>{p.address}</p>}
-                        
-                          href={"tel:" + p.phone.split(" ").join("")}
-                          className="text-xs px-3 py-1.5 rounded-full font-medium w-fit mt-1"
-                          style={{ background: "#16283F", color: "#FCFAF6" }}
-                        >
+                        <a href={"tel:" + p.phone.split(" ").join("")} className="text-xs px-3 py-1.5 rounded-full font-medium w-fit mt-1" style={{ background: "#16283F", color: "#FCFAF6" }}>
                           Anrufen: {p.phone}
                         </a>
                       </div>
-                    ) : (
+                    )}
+                    {!p.phone && (
                       <span className="text-xs px-3 py-1.5 rounded-full font-medium inline-block" style={{ background: "#E4D6BE", color: "#16283F" }}>
                         Kontakt anfragen
                       </span>
