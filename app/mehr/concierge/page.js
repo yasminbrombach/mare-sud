@@ -16,11 +16,11 @@ export default async function ConciergePage() {
         <div className="px-5 pt-6 pb-10">
           <h1 className="text-xl font-light mb-1" style={{ color: "#16283F" }}>Concierge</h1>
           <p className="text-xs mb-5" style={{ color: "#6b7280" }}>
-            Für Eigentümer: geprüfte Anbieter direkt finden und kontaktieren.
+            Fuer Eigentuemer: gepruefte Anbieter direkt finden und kontaktieren.
           </p>
 
           {categories.length === 0 && (
-            <p className="text-xs" style={{ color: "#9ca3af" }}>Noch keine Einträge – kommt gleich.</p>
+            <p className="text-xs" style={{ color: "#9ca3af" }}>Noch keine Eintraege.</p>
           )}
 
           {categories.map((cat) => (
@@ -31,7 +31,7 @@ export default async function ConciergePage() {
                   <div
                     key={p.id}
                     className="rounded-2xl px-4 py-4 relative"
-                    style={{ background: "#FCFAF6", border: `1px solid ${p.featured ? "#B8924A" : "rgba(184,146,74,0.2)"}` }}
+                    style={{ background: "#FCFAF6", border: "1px solid " + (p.featured ? "#B8924A" : "rgba(184,146,74,0.2)") }}
                   >
                     {p.featured && (
                       <span className="absolute top-3 right-4 text-[9px] tracking-widest uppercase px-2 py-0.5 rounded-full" style={{ background: "#B8924A", color: "#16283F" }}>
@@ -44,11 +44,11 @@ export default async function ConciergePage() {
                       <div className="flex flex-col gap-1">
                         {p.address && <p className="text-[11px]" style={{ color: "#9ca3af" }}>{p.address}</p>}
                         
-                          href={`tel:${p.phone.replace(/\s+/g, "")}`}
+                          href={"tel:" + p.phone.split(" ").join("")}
                           className="text-xs px-3 py-1.5 rounded-full font-medium w-fit mt-1"
                           style={{ background: "#16283F", color: "#FCFAF6" }}
                         >
-                          Anrufen · {p.phone}
+                          Anrufen: {p.phone}
                         </a>
                       </div>
                     ) : (
