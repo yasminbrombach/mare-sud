@@ -2,6 +2,7 @@ export const dynamic = "force-dynamic";
 
 import Link from "next/link";
 import { supabase } from "@/lib/supabaseClient";
+import RequestViewingButton from "@/components/RequestViewingButton";
 
 const fmtPrice = (n) => Number(n).toLocaleString("de-DE") + " €";
 
@@ -31,6 +32,7 @@ export default async function ObjektDetailPage({ params }) {
   ].filter(Boolean);
 
   const hasSourceUrl = Boolean(p.source_url);
+  const subtitle = p.title + " - " + p.location + " - " + fmtPrice(p.price);
 
   return (
     <main className="min-h-screen" style={{ background: "#EDE7DC" }}>
@@ -75,12 +77,7 @@ export default async function ObjektDetailPage({ params }) {
             </a>
           )}
 
-          <button
-            className="w-full text-sm px-4 py-3 rounded-full font-medium"
-            style={{ background: "#B8924A", color: "#16283F" }}
-          >
-            Besichtigung anfragen
-          </button>
+          <RequestViewingButton propertyId={p.id} subtitle={subtitle} />
         </div>
       </div>
     </main>
